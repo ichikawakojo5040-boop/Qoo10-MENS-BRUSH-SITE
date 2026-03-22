@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QooBrush — 男磨き企画展 | Qoo10</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #1c1c1e;
+    --navy: #2e4057;
+    --navy-deep: #1a2e40;
+    --tan: #c8b99a;
+    --tan-light: #f0ede8;
+    --white: #ffffff;
+    --mid: #6b6b6b;
+    --green: #4a6741;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid #e8e4dd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 56px;
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .qoo10-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--dark);
+    letter-spacing: 0.02em;
+  }
+  .header-divider { width: 1px; height: 20px; background: #ddd; }
+  .qoobrush-tag {
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--navy);
+    color: var(--white);
+    padding: 3px 10px;
+    letter-spacing: 0.1em;
+  }
+  .header-nav {
+    display: flex;
+    gap: 28px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--mid);
+  }
+  .header-nav a { cursor: pointer; }
+  .header-nav a:hover { color: var(--navy); }
+  .header-cta {
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--navy);
+    color: var(--white);
+    padding: 8px 18px;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 520px;
+    background: linear-gradient(145deg, var(--navy-deep) 0%, var(--navy) 50%, #1d3450 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, transparent 1px, transparent 60px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, transparent 1px, transparent 60px);
+  }
+  .hero-left { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--tan);
+    margin-bottom: 20px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--tan);
+  }
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    max-width: 400px;
+  }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--tan);
+    color: var(--dark);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 14px 28px;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 13px 28px;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-right {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 360px;
+  }
+  .hero-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    max-width: 280px;
+  }
+  .hero-stat-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 18px 16px;
+    backdrop-filter: blur(10px);
+  }
+  .hero-stat-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: var(--tan);
+    line-height: 1;
+  }
+  .hero-stat-unit { font-size: 14px; }
+  .hero-stat-label { font-size: 9px; color: rgba(255,255,255,0.5); margin-top: 6px; line-height: 1.5; }
+
+  /* ── HONMA BANNER ── */
+  .honma-banner {
+    background: var(--tan-light);
+    padding: 40px 60px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+  }
+  .honma-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--mid);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .honma-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+  .honma-text strong { color: var(--navy); font-size: 22px; }
+  .honma-source { font-size: 10px; color: var(--mid); margin-top: 8px; }
+  .honma-data-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px;
+  }
+  .honma-data-item { font-size: 11px; color: var(--mid); }
+  .honma-data-bar { height: 8px; background: #ddd8d0; border-radius: 4px; overflow: hidden; margin-top: 3px; }
+  .honma-data-fill { height: 100%; background: var(--navy); border-radius: 4px; }
+
+  /* ── GENRE SECTION ── */
+  .section { padding: 70px 60px; }
+  .section-header { margin-bottom: 40px; }
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--tan);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+  .section-desc { font-size: 13px; color: var(--mid); margin-top: 10px; line-height: 1.8; max-width: 500px; }
+
+  .genre-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .genre-card {
+    border: 1px solid #e8e4dd;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .genre-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .genre-card-img {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    position: relative;
+  }
+  .genre-card-img.fashion { background: linear-gradient(135deg, #e8f0fa 0%, #d8e8f5 100%); }
+  .genre-card-img.skincare { background: linear-gradient(135deg, #e8f5ef 0%, #d4ece0 100%); }
+  .genre-card-img.interior { background: linear-gradient(135deg, #f5ede0 0%, #ecdcc6 100%); }
+
+  .genre-card-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 3px 8px;
+    letter-spacing: 0.06em;
+  }
+  .badge-blue { background: var(--navy); color: white; }
+  .badge-green { background: var(--green); color: white; }
+  .badge-tan { background: var(--tan); color: var(--dark); }
+
+  .genre-card-body { padding: 16px 18px 20px; }
+  .genre-card-title { font-weight: 700; font-size: 15px; color: var(--dark); margin-bottom: 6px; }
+  .genre-card-desc { font-size: 11px; color: var(--mid); line-height: 1.7; margin-bottom: 12px; }
+  .genre-card-items { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 14px; }
+  .item-chip {
+    font-size: 9px;
+    background: var(--tan-light);
+    color: var(--mid);
+    padding: 3px 8px;
+  }
+  .genre-card-cta {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+
+  /* ── PRODUCTS SPOTLIGHT ── */
+  .products-section { background: var(--tan-light); padding: 70px 60px; }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .product-card {
+    background: var(--white);
+    padding: 0 0 16px;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+  }
+  .product-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  .product-card-img {
+    height: 120px;
+    background: var(--tan-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    position: relative;
+  }
+  .product-discount {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #d04a3b;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 6px;
+  }
+  .product-body { padding: 12px 14px 0; }
+  .product-brand { font-size: 8.5px; color: var(--mid); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .product-name { font-size: 11px; font-weight: 700; color: var(--dark); margin-top: 3px; line-height: 1.4; }
+  .product-price { font-size: 14px; font-weight: 700; color: var(--navy); margin-top: 6px; }
+  .product-orig { font-size: 10px; color: var(--mid); text-decoration: line-through; margin-left: 5px; }
+  .product-tag-row { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+  .p-tag { font-size: 8px; background: #f0ede8; color: var(--mid); padding: 2px 6px; }
+
+  /* ── VOTE SECTION ── */
+  .vote-section { padding: 70px 60px; background: var(--navy-deep); color: white; }
+  .vote-section .section-eyebrow { color: var(--tan); }
+  .vote-section .section-title { color: white; }
+  .vote-section .section-desc { color: rgba(255,255,255,0.6); }
+
+  .vote-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 36px;
+  }
+  .vote-panel {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 20px 22px;
+  }
+  .vote-panel-title { font-size: 11px; font-weight: 700; color: var(--tan); letter-spacing: 0.1em; margin-bottom: 16px; text-transform: uppercase; }
+  .vote-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    cursor: pointer;
+  }
+  .vote-item-emoji { font-size: 22px; width: 36px; text-align: center; flex-shrink: 0; }
+  .vote-item-info { flex: 1; }
+  .vote-item-name { font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+  .vote-item-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .vote-item-fill { height: 100%; background: var(--tan); border-radius: 2px; }
+  .vote-item-count { font-size: 9px; color: rgba(255,255,255,0.4); margin-top: 3px; }
+  .vote-item-btn {
+    width: 26px; height: 26px;
+    border: 1.5px solid var(--tan);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: var(--tan); flex-shrink: 0;
+    cursor: pointer;
+  }
+  .vote-item-btn.voted { background: var(--tan); color: var(--dark); }
+
+  .vote-info-panel {
+    background: var(--tan);
+    color: var(--dark);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .vote-info-big { font-family: 'DM Serif Display', serif; font-size: 36px; margin-bottom: 6px; }
+  .vote-info-label { font-size: 11px; font-weight: 700; margin-bottom: 14px; }
+  .vote-info-desc { font-size: 12px; line-height: 1.7; opacity: 0.8; }
+
+  /* ── CHALLENGE SECTION ── */
+  .challenge-section { padding: 70px 60px; }
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 36px;
+    align-items: start;
+  }
+  .challenge-left { }
+  .challenge-steps { margin-top: 20px; }
+  .c-step {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e8e4dd;
+    align-items: flex-start;
+  }
+  .c-step-num {
+    width: 28px; height: 28px;
+    background: var(--navy);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+  }
+  .c-step-title { font-size: 12px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+  .c-step-desc { font-size: 11px; color: var(--mid); line-height: 1.6; }
+
+  .challenge-right {
+    background: var(--tan-light);
+    padding: 28px;
+  }
+  .challenge-right h3 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 14px; }
+  .ugc-card {
+    background: white;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--navy);
+  }
+  .ugc-user { font-size: 9px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .ugc-text { font-size: 11px; color: var(--mid); line-height: 1.6; }
+  .ugc-stat { font-size: 9px; color: var(--mid); margin-top: 5px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    padding: 40px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    font-size: 11px;
+  }
+  footer h4 { color: rgba(255,255,255,0.9); font-size: 12px; margin-bottom: 14px; font-weight: 700; }
+  footer p { line-height: 1.8; }
+  footer a { color: var(--tan); cursor: pointer; }
+  .footer-bottom {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 16px 60px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-logo">
+    <div class="qoo10-logo">Qoo10</div>
+    <div class="header-divider"></div>
+    <div class="qoobrush-tag">QOOBRUSH</div>
+  </div>
+  <nav class="header-nav">
+    <a>男磨きとは</a>
+    <a>商品一覧</a>
+    <a>メガ割投票</a>
+    <a>チャレンジ</a>
+    <a>女性の本音</a>
+  </nav>
+  <div class="header-cta">今すぐ始める</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">QOOBRUSH × 男磨き 企画展</div>
+    <h1 class="hero-title">自分を磨く、<br>楽しさがある。</h1>
+    <p class="hero-sub">ファッション、スキンケア、インテリア。<br>男磨きの最初の一歩を、Qoo10がまるごとサポートする。<br>女性の本音データ × K-Beauty商品 × メガ割投票。</p>
+    <div class="hero-btns">
+      <div class="btn-primary">商品を見る →</div>
+      <div class="btn-outline">チャレンジに参加する</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-grid">
+      <div class="hero-stat-card">
+        <div class="hero-stat-val">68<span class="hero-stat-unit">%</span></div>
+        <div class="hero-stat-label">女性が男性の第一印象で<br>「清潔感」を最重視</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-val">3</div>
+        <div class="hero-stat-label">男磨きジャンル<br>ファッション / スキンケア / インテリア</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-val">7</div>
+        <div class="hero-stat-label">日間チャレンジで<br>目に見える変化を実感</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-val">K<span style="font-size:18px;">-B</span></div>
+        <div class="hero-stat-label">eauty 商品を中心に<br>初心者向けにキュレーション</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONMA BANNER -->
+<div class="honma-banner">
+  <div>
+    <div class="honma-label">DATA — 女性の本音</div>
+    <div class="honma-text">
+      男性に求めることの1位は<br><strong>「清潔感」</strong>。スキンケア・ファッション・<br>部屋の状態、すべてが対象です。
+    </div>
+    <div class="honma-source">※ Qoo10 / QBrusher 独自調査 N=553（男女混合）</div>
+  </div>
+  <div class="honma-data-row">
+    <div class="honma-data-item">清潔感（肌・髪）
+      <div class="honma-data-bar"><div class="honma-data-fill" style="width:68%"></div></div>
+      68%
+    </div>
+    <div class="honma-data-item">ファッション・服装
+      <div class="honma-data-bar"><div class="honma-data-fill" style="width:54%"></div></div>
+      54%
+    </div>
+    <div class="honma-data-item">部屋の状態・インテリア
+      <div class="honma-data-bar"><div class="honma-data-fill" style="width:41%"></div></div>
+      41%
+    </div>
+    <div class="honma-data-item">香り（フレグランス）
+      <div class="honma-data-bar"><div class="honma-data-fill" style="width:35%"></div></div>
+      35%
+    </div>
+  </div>
+</div>
+
+<!-- GENRE SECTION -->
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">3 GENRES</div>
+    <div class="section-title">男磨き、3つの入口。</div>
+    <div class="section-desc">どこから始めてもいい。得意なジャンルから一歩踏み出せば、自然と他のジャンルへも広がっていく。</div>
+  </div>
+
+  <div class="genre-grid">
+    <div class="genre-card">
+      <div class="genre-card-img fashion">
+        👔
+        <div class="genre-card-badge badge-blue">入門しやすい</div>
+      </div>
+      <div class="genre-card-body">
+        <div class="genre-card-title">ファッション</div>
+        <div class="genre-card-desc">コーデ全体を変えなくていい。小物1点で第一印象は変わる。ベルト・靴下・アクセサリーから始めよう。</div>
+        <div class="genre-card-items">
+          <span class="item-chip">ベルト</span>
+          <span class="item-chip">靴下セット</span>
+          <span class="item-chip">アクセサリー</span>
+        </div>
+        <div class="genre-card-cta">商品を見る →</div>
+      </div>
+    </div>
+
+    <div class="genre-card">
+      <div class="genre-card-img skincare">
+        🌿
+        <div class="genre-card-badge badge-green">K-Beauty優先</div>
+      </div>
+      <div class="genre-card-body">
+        <div class="genre-card-title">スキンケア・コスメ</div>
+        <div class="genre-card-desc">女性が男性を判断する一番のポイントは「肌」。難しいルーティンは不要。1〜2ステップから始められる。</div>
+        <div class="genre-card-items">
+          <span class="item-chip">洗顔料</span>
+          <span class="item-chip">化粧水</span>
+          <span class="item-chip">日焼け止め</span>
+          <span class="item-chip">リップ</span>
+        </div>
+        <div class="genre-card-cta">商品を見る →</div>
+      </div>
+    </div>
+
+    <div class="genre-card">
+      <div class="genre-card-img interior">
+        🛋️
+        <div class="genre-card-badge badge-tan">見落としがち</div>
+      </div>
+      <div class="genre-card-body">
+        <div class="genre-card-title">インテリア</div>
+        <div class="genre-card-desc">外見を磨いても部屋が汚ければ幻滅される。フレグランス・間接照明・収納で部屋の雰囲気を変えよう。</div>
+        <div class="genre-card-items">
+          <span class="item-chip">ルームフレグランス</span>
+          <span class="item-chip">間接照明</span>
+          <span class="item-chip">収納トレー</span>
+        </div>
+        <div class="genre-card-cta">商品を見る →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS SPOTLIGHT -->
+<section class="products-section">
+  <div class="section-header">
+    <div class="section-eyebrow">PICKED ITEMS</div>
+    <div class="section-title">まずこれだけ。<br>初心者向けキュレーション。</div>
+    <div class="section-desc">「何を買えばいいかわからない」を解消するために、QBrusherチームと監修した入門商品を厳選。</div>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-card-img">
+        🧴
+        <div class="product-discount">22% OFF</div>
+      </div>
+      <div class="product-body">
+        <div class="product-brand">K-BEAUTY</div>
+        <div class="product-name">酵素洗顔パウダー 30包</div>
+        <div>
+          <span class="product-price">¥2,480</span>
+          <span class="product-orig">¥3,200</span>
+        </div>
+        <div class="product-tag-row">
+          <span class="p-tag">毛穴ケア</span>
+          <span class="p-tag">泡立て不要</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-card-img">
+        💧
+        <div class="product-discount">15% OFF</div>
+      </div>
+      <div class="product-body">
+        <div class="product-brand">K-BEAUTY</div>
+        <div class="product-name">モイスチャートナー 200ml</div>
+        <div>
+          <span class="product-price">¥3,200</span>
+          <span class="product-orig">¥3,760</span>
+        </div>
+        <div class="product-tag-row">
+          <span class="p-tag">保湿</span>
+          <span class="p-tag">さらっと</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-card-img">
+        ☀️
+      </div>
+      <div class="product-body">
+        <div class="product-brand">UV CARE</div>
+        <div class="product-name">ノンオイル UV プロテクター SPF50+</div>
+        <div>
+          <span class="product-price">¥2,100</span>
+        </div>
+        <div class="product-tag-row">
+          <span class="p-tag">白くならない</span>
+          <span class="p-tag">1プッシュ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-card-img">
+        💡
+        <div class="product-discount">10% OFF</div>
+      </div>
+      <div class="product-body">
+        <div class="product-brand">INTERIOR</div>
+        <div class="product-name">間接照明 USB給電タイプ</div>
+        <div>
+          <span class="product-price">¥2,900</span>
+          <span class="product-orig">¥3,200</span>
+        </div>
+        <div class="product-tag-row">
+          <span class="p-tag">設置簡単</span>
+          <span class="p-tag">モテ部屋</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:32px;">
+    <div class="btn-primary" style="display:inline-block;">すべての商品を見る →</div>
+  </div>
+</section>
+
+<!-- VOTE SECTION -->
+<section class="vote-section">
+  <div class="section-header">
+    <div class="section-eyebrow">MEGA SALE VOTE</div>
+    <div class="section-title">あなたの1票が、<br>割引を決める。</div>
+    <div class="section-desc">次のメガ割でセール対象にしてほしい商品に投票しよう。得票数上位の商品が割引対象に決定。投票参加者全員に10%OFFクーポンを配布。</div>
+  </div>
+
+  <div class="vote-grid">
+    <div>
+      <div class="vote-panel">
+        <div class="vote-panel-title">スキンケア部門</div>
+        <div class="vote-item">
+          <div class="vote-item-emoji">🧴</div>
+          <div class="vote-item-info">
+            <div class="vote-item-name">クリアウォッシュ 酵素洗顔</div>
+            <div class="vote-item-bar"><div class="vote-item-fill" style="width:72%"></div></div>
+            <div class="vote-item-count">1,254票</div>
+          </div>
+          <div class="vote-item-btn voted">✓</div>
+        </div>
+        <div class="vote-item">
+          <div class="vote-item-emoji">💧</div>
+          <div class="vote-item-info">
+            <div class="vote-item-name">アクアブースト トナー</div>
+            <div class="vote-item-bar"><div class="vote-item-fill" style="width:45%"></div></div>
+            <div class="vote-item-count">982票</div>
+          </div>
+          <div class="vote-item-btn">○</div>
+        </div>
+        <div class="vote-item">
+          <div class="vote-item-emoji">☀️</div>
+          <div class="vote-item-info">
+            <div class="vote-item-name">ナチュラル UVクリーム</div>
+            <div class="vote-item-bar"><div class="vote-item-fill" style="width:33%"></div></div>
+            <div class="vote-item-count">721票</div>
+          </div>
+          <div class="vote-item-btn">○</div>
+        </div>
+      </div>
+
+      <div class="vote-panel" style="margin-top:16px;">
+        <div class="vote-panel-title">ファッション部門</div>
+        <div class="vote-item">
+          <div class="vote-item-emoji">🎽</div>
+          <div class="vote-item-info">
+            <div class="vote-item-name">レザー調シンプルベルト</div>
+            <div class="vote-item-bar"><div class="vote-item-fill" style="width:58%"></div></div>
+            <div class="vote-item-count">1,106票</div>
+          </div>
+          <div class="vote-item-btn">○</div>
+        </div>
+        <div class="vote-item">
+          <div class="vote-item-emoji">🧦</div>
+          <div class="vote-item-info">
+            <div class="vote-item-name">無地靴下 3足セット</div>
+            <div class="vote-item-bar"><div class="vote-item-fill" style="width:42%"></div></div>
+            <div class="vote-item-count">803票</div>
+          </div>
+          <div class="vote-item-btn">○</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="vote-info-panel">
+        <div class="vote-info-big">10<span style="font-size:20px;">%</span></div>
+        <div class="vote-info-label">投票するだけでクーポンGET</div>
+        <div class="vote-info-desc">投票に参加するだけで全員に10%OFFクーポンを配布。次のメガ割期間中に使用可能。メガ割前の2週間のみ開催。</div>
+        <div style="margin-top:20px;background:rgba(0,0,0,0.1);padding:12px;">
+          <div style="font-size:10px;font-weight:700;margin-bottom:4px;color:var(--dark);">投票締め切りまで</div>
+          <div style="font-size:22px;font-weight:700;font-family:'DM Serif Display',serif;color:var(--dark);">11日 08:23:41</div>
+        </div>
+        <div style="margin-top:16px;background:var(--navy-deep);color:white;font-size:11px;font-weight:700;text-align:center;padding:12px;cursor:pointer;letter-spacing:0.06em;">
+          今すぐ投票する →
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGE SECTION -->
+<section class="challenge-section">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+    <div>
+      <div class="section-eyebrow">7-DAY CHALLENGE</div>
+      <div class="section-title">男磨き<br>1週間チャレンジ</div>
+      <div class="section-desc" style="margin-bottom:0;">企画展の商品を使って7日間チャレンジ。毎日の変化をSNSに投稿して、完走でクーポンをGET。始めるのに遅すぎることはない。</div>
+
+      <div class="challenge-steps">
+        <div class="c-step">
+          <div class="c-step-num">1</div>
+          <div>
+            <div class="c-step-title">参加宣言</div>
+            <div class="c-step-desc">このページから参加登録。ハッシュタグ #QooBrush1週間 を付けてSNSで宣言するだけ。</div>
+          </div>
+        </div>
+        <div class="c-step">
+          <div class="c-step-num">2</div>
+          <div>
+            <div class="c-step-title">商品を選ぶ</div>
+            <div class="c-step-desc">企画展の入門商品から1〜3点を選んで購入。何から始めるか迷ったらスターターセットがおすすめ。</div>
+          </div>
+        </div>
+        <div class="c-step">
+          <div class="c-step-num">3</div>
+          <div>
+            <div class="c-step-title">7日間投稿</div>
+            <div class="c-step-desc">毎日の変化を写真や文章でSNSに投稿。公式アカウントがリポストすることも。</div>
+          </div>
+        </div>
+        <div class="c-step">
+          <div class="c-step-num">4</div>
+          <div>
+            <div class="c-step-title">完走でクーポンGET</div>
+            <div class="c-step-desc">7日間完走した方には次回使える500〜1,000円クーポンを配布。継続のご褒美。</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <div class="btn-primary" style="display:inline-block;cursor:pointer;">チャレンジに参加する →</div>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="font-weight:700;margin-bottom:16px;font-size:14px;">参加者の声</h3>
+      <div class="ugc-card">
+        <div class="ugc-user">Takuya_027 — Day 3</div>
+        <div class="ugc-text">「酵素洗顔3日目。毛穴の黒ずみが明らかに減った気がする。これ続けられる気がしてきた。」</div>
+        <div class="ugc-stat">❤️ 47  💬 12  #QooBrush1週間</div>
+      </div>
+      <div class="ugc-card">
+        <div class="ugc-user">kento.style — Day 7 完走</div>
+        <div class="ugc-text">「1週間完走！肌が明らかに変わった。友達に『なんかきれいになった？』と言われた。Qoo10の商品すごい。」</div>
+        <div class="ugc-stat">❤️ 203  💬 38  🔁 55  #QooBrush1週間</div>
+      </div>
+      <div class="ugc-card">
+        <div class="ugc-user">yuki_room — Day 5</div>
+        <div class="ugc-text">「間接照明を置いただけで部屋の雰囲気が激変。彼女が来た時『なんかオシャレになった』と言ってくれた。」</div>
+        <div class="ugc-stat">❤️ 124  💬 19  #QooBrush1週間</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <h4>QooBrush について</h4>
+    <p>高校生チーム「QBrusher」と<br>Qoo10が共同で企画した<br>男磨き応援プロジェクト。<br>2026年 スタート。</p>
+  </div>
+  <div>
+    <h4>リンク</h4>
+    <p><a>企画展トップ</a><br><a>メガ割投票</a><br><a>1週間チャレンジ</a><br><a>女性の本音データ</a><br><a>スタイリングガイド</a></p>
+  </div>
+  <div>
+    <h4>お問い合わせ</h4>
+    <p>Qoo10 カスタマーサポート<br><a>support@qoo10.jp</a></p>
+    <p style="margin-top:12px;">© 2026 Qoo10 (eBay Japan)<br>QooBrush 企画展</p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 Qoo10 × QBrusher — QooBrush 企画展</span>
+  <span>プライバシーポリシー ｜ 利用規約</span>
+</div>
+
+</body>
+</html>
